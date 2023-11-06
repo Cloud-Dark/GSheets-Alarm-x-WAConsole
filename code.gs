@@ -1,5 +1,9 @@
 function checkTableAndHitAPI() {
 
+  //authentikasi
+  var appkey = "";
+  var authkey = "";
+
   //mode standart
   var sheetid = "1W1VgPDmdcCcaIootsSexH5jTGLCVARPl2ghd-9PVASM"; //silahkan pasang id gsheets
   var sheetname = "Sheet1"; //beri nama worksheet disini
@@ -22,13 +26,14 @@ function checkTableAndHitAPI() {
     var id = values[i][0];
     var text = values[i][1];
     var datetime = values[i][2];
+    var receiver = values[i][3];
     // Convert the datetime to a Date object
     var date = new Date(datetime);
     // Get the current date and time
     var now = new Date();
     // Compare the date and time with a tolerance of 1 minute
     if (Math.abs(date.getTime() - now.getTime()) <= chunk) {
-      Logger.log(sendtext(text));
+      Logger.log(sendtext(receiver, text, appkey, authkey));
       // If there is a match, hit the API with the id and text as query parameters
       var url = webhooklink+"?text=" + text + "&id=" + id;
       var response = UrlFetchApp.fetch(url);
