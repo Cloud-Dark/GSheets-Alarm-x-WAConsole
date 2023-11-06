@@ -9,8 +9,8 @@ function checkTableAndHitAPI() {
   var sheetname = ""; //Name the worksheet here
 
   //mode developer
-  var chunk = 60000; //set a maximum tolerance time limit, for example the time difference between now and the time on the sheets is 1 minute.
-  var webhooklink = "https://webhook.site/cbbf2f12-fc1c-4d14-83c4-4f3da0542403";//give a webhook link if you want to see what data is sent / debug mode
+  var chunk = 60000; //beri batas waktu maksimal toleransi, misal perbedaan waktu antara saat ini dan waktu di sheets adalah 1 menit. 
+  var webhooklink = "https://webhook.site/cbbf2f12-fc1c-4d14-83c4-4f3da0542403";//beri webhook link jika ingin melihat data apa saja yang dikirimkan / mode debug
 
   // Get the spreadsheet by ID
   var spreadsheet = SpreadsheetApp.openById(sheetid);
@@ -22,6 +22,7 @@ function checkTableAndHitAPI() {
   var values = range.getValues();
   // Loop through the rows, skipping the header
   for (var i = 1; i < values.length; i++) {
+
     // Get the id, text, and datetime from the row
     var id = values[i][0];
     var text = values[i][1];
