@@ -1,8 +1,8 @@
-function sendtext(to, text, appkey, authey) {
+function sendtext(to,message,authkey,appkey) {
   var to = to;
-  var message = text;
-  var authkey = appkey;
-  var appkey = authey;
+  var message = message;
+  var authkey = authkey;
+  var appkey = appkey;
   Logger.log(
     apipedia.sendtextwaconsole(
       to,
@@ -12,13 +12,12 @@ function sendtext(to, text, appkey, authey) {
       )
     );
 }
-
-function sendmedia(to, text, appkey, authey, urlmedia, medianame) {
+function sendmedia(to, text, appkey, authkey, urlmedia, medianame) {
   var file = urlmedia;
   var filename = medianame;
   var to = to;
   var message = text;
-  var authkey = authey;
+  var authkey = authkey;
   var appkey = appkey;
   Logger.log(
     apipedia.sendmediawaconsole(
