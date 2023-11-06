@@ -1,16 +1,16 @@
 function checkTableAndHitAPI() {
 
   //authentikasi
-  var appkey = "";
-  var authkey = "";
+  var appkey = "";//obtained from the apps menu waconsole.apipedia.id
+  var authkey = "";//obtained from the apps menu waconsole.apipedia.id
 
   //mode standart
-  var sheetid = "1W1VgPDmdcCcaIootsSexH5jTGLCVARPl2ghd-9PVASM"; //silahkan pasang id gsheets
-  var sheetname = "Sheet1"; //beri nama worksheet disini
+  var sheetid = ""; //Please attach ID sheets
+  var sheetname = ""; //Name the worksheet here
 
   //mode developer
-  var chunk = 60000; //beri batas waktu maksimal toleransi, misal perbedaan waktu antara saat ini dan waktu di sheets adalah 1 menit. 
-  var webhooklink = "https://webhook.site/cbbf2f12-fc1c-4d14-83c4-4f3da0542403";//beri webhook link jika ingin melihat data apa saja yang dikirimkan / mode debug
+  var chunk = 60000; //set a maximum tolerance time limit, for example the time difference between now and the time on the sheets is 1 minute.
+  var webhooklink = "https://webhook.site/cbbf2f12-fc1c-4d14-83c4-4f3da0542403";//give a webhook link if you want to see what data is sent / debug mode
 
   // Get the spreadsheet by ID
   var spreadsheet = SpreadsheetApp.openById(sheetid);
@@ -33,7 +33,7 @@ function checkTableAndHitAPI() {
     var now = new Date();
     // Compare the date and time with a tolerance of 1 minute
     if (Math.abs(date.getTime() - now.getTime()) <= chunk) {
-      Logger.log(sendtext(receiver, text, appkey, authkey));
+      Logger.log(sendtext(receiver,text,authkey,appkey));
       // If there is a match, hit the API with the id and text as query parameters
       var url = webhooklink+"?text=" + text + "&id=" + id;
       var response = UrlFetchApp.fetch(url);
